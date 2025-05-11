@@ -1,9 +1,13 @@
-import React from 'react'
 import './App.css'
+import Menu from './components/Menu'
+import Bill from './components/Bill'
 const App = () => {
   return (
-    <div className="">App</div>
-  )
+    <>
+      <Menu />
+      <Bill/>
+    </>
+  );
 }
 
 export default App
