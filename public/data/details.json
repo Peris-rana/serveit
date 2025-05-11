@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "message": "STATIC DATA",
+  "data": {
+    "food": [
+      {
+        "id": 1,
+        "name": "Sandwich",
+        "price": 199
+      },
+      {
+        "id": 2,
+        "name": "Coffee",
+        "price": 99
+      },
+      {
+        "id": 3,
+        "name": "Tea",
+        "price": 29
+      },
+      {
+        "id": 4,
+        "name": "Cake",
+        "price": 399
+      },
+      {
+        "id": 5,
+        "name": "Donut",
+        "price": 129
+      },
+      {
+        "id": 3,
+        "name": "Cookies",
+        "price": 229
+      }
+    ]
+  }
+}
