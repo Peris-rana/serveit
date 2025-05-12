@@ -15,9 +15,9 @@ const Menu = () => {
   
   return (
     <>
-      <div className="w-8/12">
+      <div className="md:w-8/12">
         <p className="text-5xl font-black">Menu</p>
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-2 mt-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 sm:grid-cols-2 gap-2 mt-3">
           {foodData.map((food, index) => (
             <Card
               key={index}

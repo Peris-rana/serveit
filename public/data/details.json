@@ -7,37 +7,37 @@
         "id": 1,
         "name": "Sandwich",
         "price": 199,
-        "image": "/src/assets/images/sandwitch.jpg"
+        "image": "/images/sandwitch.jpg"
       },
       {
         "id": 2,
         "name": "Coffee",
         "price": 99,
-        "image": "/src/assets/images/coffee.jpg"
+        "image": "/images/coffee.jpg"
       },
       {
         "id": 3,
         "name": "Tea",
         "price": 29,
-        "image": "/src/assets/images/tea.jpg"
+        "image": "/images/tea.jpg"
       },
       {
         "id": 4,
         "name": "Cake",
         "price": 399,
-        "image": "/src/assets/images/cake.jpg"
+        "image": "/images/cake.jpg"
       },
       {
         "id": 5,
         "name": "Donut",
         "price": 129,
-        "image": "/src/assets/images/donut.jpg"
+        "image": "/images/donut.jpg"
       },
       {
-        "id": 3,
+        "id": 6,
         "name": "Cookies",
         "price": 229,
-        "image": "/src/assets/images/cookies.jpg"
+        "image": "/images/cookies.jpg"
       }
     ]
   }
