@@ -1,7 +1,10 @@
+import OrderNowButton from "./OrderNowButton";
+import ViewOrders from "./ViewOrders";
+
 const Invoice = () => {
   return (
     <>
-      <div>
+      <div className=" md:min-h-0">
         <hr className="mt-4" />
         <div className="flex justify-between mt-6">
           <h1 className="text-lg font-bold">Invoice</h1>
@@ -17,7 +20,7 @@ const Invoice = () => {
         </div>
         <div>
         </div>
-        <table className="w-[450px] mt-4">
+        <table className="w-[300px] md:w-[450px] mt-4">
           <thead>
             <tr>
               <th className="text-left font-bold text-white">Description</th>
@@ -46,6 +49,8 @@ const Invoice = () => {
             </tfoot>
         </table>
       </div>
+      <OrderNowButton/>
+      <ViewOrders/>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import './App.css'
 import Menu from './components/Menu'
 import Bill from './components/Bill'
+import OrderTable from './components/OrderTable';
 const App = () => {
   return (
     <>
@@ -8,6 +9,7 @@ const App = () => {
         <Menu />
         <Bill />
       </div>
+      <OrderTable/>
     </>
   );
 }
