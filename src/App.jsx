@@ -4,8 +4,10 @@ import Bill from './components/Bill'
 const App = () => {
   return (
     <>
-      <Menu />
-      <Bill/>
+      <div className="flex flex-col md:flex-row ">
+        <Menu />
+        <Bill />
+      </div>
     </>
   );
 }
