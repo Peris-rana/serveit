@@ -4,17 +4,17 @@ import ViewOrders from "./ViewOrders";
 const Invoice = () => {
   return (
     <>
-      <div className=" md:min-h-0">
+      <div className=" md:min-h-0 ">
         <hr className="mt-4" />
-        <div className="flex justify-between mt-6">
+        <div className="flex justify-between mt-1">
           <h1 className="text-lg font-bold">Invoice</h1>
           <div className="text-white">
             <div>Date: 01/05/2023</div>
             <div>Invoice #: INV12345</div>
           </div>
         </div>
-        <div className="mb-8 mt-30">
-          <h2 className="text-lg font-bold mb-4">Bill To:</h2>
+        <div className="mb-8 mt-3">
+          <h2 className="text-lg font-bold ">Bill To:</h2>
           <div className="text-white mb-2">Peris rana</div>
           <div className="text-white mb-2">Anytown, Nepal 12345</div>
         </div>
@@ -51,7 +51,7 @@ const Invoice = () => {
       </div>
       <OrderNowButton/>
       <ViewOrders/>
-    </>
+   </>
   );
 };
 

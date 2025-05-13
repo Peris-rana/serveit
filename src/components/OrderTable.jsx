@@ -1,8 +1,8 @@
 const OrderTable = () => {
   return (
-    <div className="min-h-screen  mt-12" id="order-table"> 
-      <div className="text-5xl font-bold text-center p-12">Order table</div>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mt-4">
+    <div className="min-h-screen" id="order-table">
+      <div className="text-4xl font-bold mt-8">Order table</div>
+      <div className="overflow-x-auto rounded-box border border-base-content/5 ">
         <table className="table">
           {/* head */}
           <thead>

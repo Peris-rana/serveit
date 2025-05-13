@@ -1,7 +1,13 @@
-const Card = ({ name, image }) => {
+const Card = ({ name, price, image, onSelect }) => {
+  const handleClick = () => {
+    onSelect(price, name);
+  };
   return (
-    <div className="card brightness-200 bg-base-100 image-full rounded-md  shadow-md cursor-pointer">
-      <figure className="md:h-93 max-h-screen">
+    <div
+      className="card brightness-200 bg-base-100 image-full rounded-md  shadow-md cursor-pointer"
+      onClick={handleClick}
+    >
+      <figure className="aspect-[2/3] md:aspect-auto md:h-93">
         <img src={image} alt={image} className="w-full" />
       </figure>
       <div className="card-body p-3">
