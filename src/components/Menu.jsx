@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Card from "./Card";
+import { FoodContext } from "../context/FoodContext";
 const Menu = () => {
   const [foodData, setFoodData] = useState([]);
   const [selectdFoodPrice, setSelectedFoodPrice] = useState([]);
   const [selectdFoodName, setSelectedFoodName] = useState([]);
+  const { addFood } = useContext(FoodContext);
   useEffect(() => {
     const fetchData = () => {
       fetch("/data/details.json")
@@ -16,13 +18,14 @@ const Menu = () => {
     // data is in table format
     console.table(
       selectdFoodName.map((name, index) => {
-        return { Name: name, Price : selectdFoodPrice[index] };
+        return { Name: name, Price: selectdFoodPrice[index] };
       })
     );
-  }, [selectdFoodName,selectdFoodPrice]);
+  }, [selectdFoodName, selectdFoodPrice]);
   const handleClick = (price, name) => {
     setSelectedFoodPrice((prev) => [...prev, price]);
     setSelectedFoodName((prev) => [...prev, name]);
+    addFood(name, price);
   };
 
   return (
