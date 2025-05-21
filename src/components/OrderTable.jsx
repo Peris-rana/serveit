@@ -1,44 +1,90 @@
 const OrderTable = () => {
   return (
-    <div className="min-h-screen" id="order-table">
-      <div className="text-4xl font-bold mt-8">Order table</div>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 ">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <>
+      <section id="order-table" className=" min-h-screen flex justify-around">
+        <div className="card w-96 bg-base-100 shadow-sm">
+          <div className="card-body">
+            <div className="flex justify-between">
+              <h2 className="text-3xl font-bold">Premium</h2>
+              <span className="text-xl">$29/mo</span>
+            </div>
+            <ul className="mt-6 flex flex-col gap-2 text-xs">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 me-2 inline-block text-success"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>High-resolution image generation</span>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 me-2 inline-block text-success"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Customizable style templates</span>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 me-2 inline-block text-success"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Batch processing capabilities</span>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-4 me-2 inline-block text-success"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>AI-driven image enhancements</span>
+              </li>
+            </ul>
+            <div className="mt-6">
+              <button className="btn btn-primary btn-block">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

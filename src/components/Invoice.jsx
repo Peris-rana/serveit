@@ -65,7 +65,7 @@ const Invoice = () => {
           </tfoot>
         </table>
       </div>
-      <OrderNowButton />
+      <OrderNowButton foodMap={foodMap} total={total} />
       <ViewOrders />
     </>
   );

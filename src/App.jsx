@@ -1,7 +1,9 @@
-import './App.css'
-import Menu from './components/Menu'
-import Bill from './components/Bill'
-import OrderTable from './components/OrderTable';
+import "./App.css";
+import Menu from "./components/Menu";
+import Bill from "./components/Bill";
+import OrderTable from "./components/OrderTable";
+import { ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <>
@@ -9,9 +11,22 @@ const App = () => {
         <Menu />
         <Bill />
       </div>
-      <OrderTable/>
+      <OrderTable />
+      <ToastContainer
+        position="top-left"
+        autoClose={1500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />{" "}
     </>
   );
-}
+};
 
-export default App
+export default App;
