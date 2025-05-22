@@ -1,21 +1,16 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import OrderNowButton from "./OrderNowButton";
 import ViewOrders from "./ViewOrders";
 import { FoodContext } from "../context/FoodContext";
+import { OrderContext } from "../context/OrderContext";
 
 const presentDate = new Date();
 
 const Invoice = () => {
   const foodMap = {};
   const { selectedFood } = useContext(FoodContext);
-  const [orders, setOrders] = useState([]);
+  const { orders, setOrders } = useContext(OrderContext);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("Orders");
-    if (saved) {
-      return setOrders(JSON.parse(saved));
-    }
-  }, []);
   selectedFood.forEach((food) => {
     if (foodMap[food.name]) {
       foodMap[food.name].quantity += 1;
