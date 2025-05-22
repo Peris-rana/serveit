@@ -1,11 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import OrderNowButton from "./OrderNowButton";
 import ViewOrders from "./ViewOrders";
 import { FoodContext } from "../context/FoodContext";
 
+const presentDate = new Date();
+
 const Invoice = () => {
   const foodMap = {};
   const { selectedFood } = useContext(FoodContext);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("Orders");
+    if (saved) {
+      return setOrders(JSON.parse(saved));
+    }
+  }, []);
   selectedFood.forEach((food) => {
     if (foodMap[food.name]) {
       foodMap[food.name].quantity += 1;
@@ -17,7 +27,6 @@ const Invoice = () => {
     (acc, food) => acc + food.price * food.quantity,
     0
   );
-  console.log(foodMap);
   return (
     <>
       <div className=" md:min-h-0 ">
@@ -25,14 +34,14 @@ const Invoice = () => {
         <div className="flex justify-between mt-1">
           <h1 className="text-lg font-bold">Invoice</h1>
           <div className="text-white">
-            <div>Date: 01/05/2023</div>
-            <div>Invoice #: INV12345</div>
+            <div>Date: {presentDate.toLocaleDateString()}</div>
+            <div>Invoice #: {total}</div>
           </div>
         </div>
         <div className="mb-8 mt-3">
           <h2 className="text-lg font-bold ">Bill To:</h2>
-          <div className="text-white mb-2">Peris rana</div>
-          <div className="text-white mb-2">Anytown, Nepal 12345</div>
+          <div className="text-white mb-2">Customer</div>
+          <div className="text-white mb-2"> Nepal 12345</div>
         </div>
         <div></div>
         <table className="w-[300px] md:w-[450px] mt-4">
@@ -65,7 +74,12 @@ const Invoice = () => {
           </tfoot>
         </table>
       </div>
-      <OrderNowButton foodMap={foodMap} total={total} />
+      <OrderNowButton
+        foodMap={foodMap}
+        total={total}
+        orders={orders}
+        setOrders={setOrders}
+      />
       <ViewOrders />
     </>
   );

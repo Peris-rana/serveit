@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { FoodContext } from "../context/FoodContext";
 
-const OrderNowButton = ({ foodMap, total }) => {
-  const [orders, setOrders] = useState([]);
+const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
+  const { reset } = useContext(FoodContext);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("Orders");
-    if (saved) {
-      return setOrders(JSON.parse(saved));
-    }
-  }, []);
   const handleClick = () => {
     if (Object.keys(foodMap).length === 0) {
       toast.error("Please select");
       return;
     }
-    const newOrder = { order: foodMap, total: total };
+    const newOrder = { order: foodMap, total: total, tokenNumber: total };
     const updatedOrders = [...orders, newOrder];
     setOrders(updatedOrders);
     localStorage.setItem("Orders", JSON.stringify(updatedOrders));
     toast.success("Order placed successfully");
+    reset();
   };
   return (
     <button
