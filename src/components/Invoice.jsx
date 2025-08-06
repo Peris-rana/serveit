@@ -75,7 +75,6 @@ const Invoice = () => {
         orders={orders}
         setOrders={setOrders}
       />
-      <ViewOrders />
     </>
   );
 };

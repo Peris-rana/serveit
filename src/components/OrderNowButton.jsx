@@ -19,7 +19,7 @@ const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
   };
   return (
     <button
-      className="btn btn-success sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mb-4 mt-auto text-amber-50"
+      className="btn btn-outline sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mb-4 mt-auto text-amber-50"
       onClick={handleClick}
     >
       Order Now
