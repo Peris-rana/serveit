@@ -18,7 +18,7 @@ const App = () => {
         Open Orders
       </button>
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box w-11/12 max-w-7xl">
           <h3 className="font-bold text-lg">CurrentOrders</h3>
           <OrderTable />
           <div className="modal-action">

@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const OrderContext = createContext();
 export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
@@ -9,9 +10,13 @@ export const OrderProvider = ({ children }) => {
       setOrders(JSON.parse(saved));
     }
   }, []);
-
+  const removeOrder = (id) => {
+    const updatedOrders = orders.filter((order) => order.id !== id);
+    setOrders(updatedOrders)
+    localStorage.setItem("Orders", JSON.stringify(updatedOrders));
+  };
   return (
-    <OrderContext.Provider value={{ orders, setOrders }}>
+    <OrderContext.Provider value={{ orders, setOrders,removeOrder }}>
       {children}
     </OrderContext.Provider>
   );

@@ -1,18 +1,18 @@
 import { useContext } from "react";
 import { OrderContext } from "../context/OrderContext";
 const OrderTable = () => {
-  const { orders } = useContext(OrderContext);
+  const { orders, removeOrder } = useContext(OrderContext);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
   return (
     <>
       <section
         id="order-table"
-        className=" grid grid-cols-2 md:flex md:justify-center md:gap-2 gap-1 flex-wrap"
+        className=" grid grid-cols-2 md:flex md:justify-center md:gap-2 gap-1 md:flex-wrap"
       >
         {ordersSorted.map((order, index) => {
           return (
-            <div className="card md:w-96 bg-base-100 shadow-sm " key={index}>
+            <div className="card md:w-96 bg-base-100 shadow-sm border border-primary m-1.5" key={index}>
               <div className="card-body ">
                 <div className="md:flex md:justify-between">
                   <h2 className="md:text-3xl text-xl font-bold">
@@ -20,7 +20,7 @@ const OrderTable = () => {
                   </h2>
                   <span className="text-xl">{order.total}</span>
                 </div>
-                <ul className="mt-6 md:flex md:flex-col gap-2 text-xs h-5/6">
+                <ul className="h-8/12 ">
                   {Object.entries(order.order).map(([key, details]) => {
                     return (
                       <li key={key}>
@@ -47,11 +47,15 @@ const OrderTable = () => {
                     );
                   })}
                 </ul>
-                <div className="mt-6">
-                  <button className="btn btn-primary w-full  md:btn-block">
+               
+                  <button
+                    className="btn btn-primary  w-full  md:btn-block"
+                    onClick={() => {
+                      removeOrder(order.id);
+                    }}
+                  >
                     Done
                   </button>
-                </div>
               </div>
             </div>
           );
