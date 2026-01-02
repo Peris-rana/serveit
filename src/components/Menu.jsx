@@ -8,7 +8,7 @@ const Menu = () => {
   const { addFood } = useContext(FoodContext);
   useEffect(() => {
     const fetchData = () => {
-      fetch("/data/details.json")
+      fetch("/serveit/data/details.json")
         .then((response) => response.json())
         .then((data) => {
           setFoodData(data.data.food);
