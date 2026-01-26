@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 const OrderTable = () => {
   const { orders, removeOrder } = useContext(OrderContext);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
   return (
@@ -12,13 +13,18 @@ const OrderTable = () => {
       >
         {ordersSorted.map((order, index) => {
           return (
-            <div className="card md:w-96 bg-base-100 shadow-sm border border-primary m-1.5" key={index}>
+            <div
+              className="card md:w-96 bg-base-100 shadow-sm border border-primary m-1.5"
+              key={index}
+            >
               <div className="card-body ">
                 <div className="md:flex md:justify-between">
-                  <h2 className="md:text-3xl text-xl font-bold">
+                  <h2 className="md:text-3xl text-xl text-slate-100 font-medium">
                     Order #{order.total}
                   </h2>
-                  <span className="text-xl">{order.total}</span>
+                  <span className="text-xl badge badge-outline text-slate-500 p-4 badge-ghost">
+                    {order.total}
+                  </span>
                 </div>
                 <ul className="h-8/12 ">
                   {Object.entries(order.order).map(([key, details]) => {
@@ -47,19 +53,48 @@ const OrderTable = () => {
                     );
                   })}
                 </ul>
-               
-                  <button
-                    className="btn btn-primary  w-full  md:btn-block"
-                    onClick={() => {
-                      removeOrder(order.id);
-                    }}
-                  >
-                    Done
-                  </button>
+                <button
+                  className="btn bg-blue-500 hover:bg-blue-900"
+                  onClick={() => {
+                    setSelectedOrder(order);
+                    document.getElementById("my_modal_5").showModal();
+                  }}
+                >
+                  Edit Order
+                </button>
+                <dialog
+                  id="my_modal_5"
+                  className="modal modal-bottom sm:modal-middle"
+                >
+                  <div className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">
+                      Press ESC key or click the button below to close
+                    </p>
+               <p>
+               {selectedOrder && selectedOrder.total}
+               </p>
+                    <div className="modal-action">
+                      <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn">Close</button>
+                      </form>
+                    </div>
+                  </div>
+                </dialog>
+                <button
+                  className="btn btn-primary  w-full  md:btn-block"
+                  onClick={() => {
+                    removeOrder(order.id);
+                  }}
+                >
+                  Done
+                </button>
               </div>
             </div>
           );
         })}
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
       </section>
     </>
   );
