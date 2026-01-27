@@ -11,16 +11,16 @@ const OrderTable = () => {
         id="order-table"
         className=" grid grid-cols-2 md:flex md:justify-center md:gap-2 gap-1 md:flex-wrap"
       >
-        {ordersSorted.map((order, index) => {
+        {ordersSorted.map((order) => {
           return (
             <div
               className="card md:w-96 bg-base-100 shadow-sm border border-primary m-1.5"
-              key={index}
+              key={order.id}
             >
               <div className="card-body ">
                 <div className="md:flex md:justify-between">
                   <h2 className="md:text-3xl text-xl text-slate-100 font-medium">
-                    Order #{order.total}
+                    Order #{order.id}
                   </h2>
                   <span className="text-xl badge badge-outline text-slate-500 p-4 badge-ghost">
                     {order.total}
@@ -62,26 +62,7 @@ const OrderTable = () => {
                 >
                   Edit Order
                 </button>
-                <dialog
-                  id="my_modal_5"
-                  className="modal modal-bottom sm:modal-middle"
-                >
-                  <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">
-                      Press ESC key or click the button below to close
-                    </p>
-               <p>
-               {selectedOrder && selectedOrder.total}
-               </p>
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="btn">Close</button>
-                      </form>
-                    </div>
-                  </div>
-                </dialog>
+
                 <button
                   className="btn btn-primary  w-full  md:btn-block"
                   onClick={() => {
@@ -96,6 +77,26 @@ const OrderTable = () => {
         })}
         {/* Open the modal using document.getElementById('ID').showModal() method */}
       </section>
+      {selectedOrder && (
+        <dialog id="my_modal_5" className="modal modal-open sm:modal-middle">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Hello!</h3>
+            <p className="py-4">
+              Press ESC key or click the button below to close
+            </p>
+            <p>{selectedOrder.total}</p>
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn" onClick={() => setSelectedOrder(null)}>
+                  {" "}
+                  close
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      )}
     </>
   );
 };
