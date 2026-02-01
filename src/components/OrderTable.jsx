@@ -57,7 +57,7 @@ const OrderTable = () => {
                   className="btn bg-blue-500 hover:bg-blue-900"
                   onClick={() => {
                     setSelectedOrder(order);
-                    document.getElementById("my_modal_5").showModal();
+                    // document.getElementById("my_modal_5").showModal();
                   }}
                 >
                   Edit Order
@@ -85,6 +85,15 @@ const OrderTable = () => {
               Press ESC key or click the button below to close
             </p>
             <p>{selectedOrder.total}</p>
+            <ul className="h-9/12 list-none">
+              {Object.entries(selectedOrder.order).map(([key, details]) => {
+                return (
+                  <li key={key}>
+                    {key}: {details.quantity}
+                  </li>
+                );
+              })}
+            </ul>
             <div className="modal-action">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
