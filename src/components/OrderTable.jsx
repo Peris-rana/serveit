@@ -5,6 +5,18 @@ const OrderTable = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
+
+  //open modal
+  const openModal = (order) => {
+    setSelectedOrder(order);
+    document.getElementById("order_modal").showModal();
+  };
+  //close modal
+  const closeModal = () => {
+    setSelectedOrder(null);
+    document.getElementById("order_modal").close();
+  };
+
   return (
     <>
       <section
@@ -56,8 +68,7 @@ const OrderTable = () => {
                 <button
                   className="btn bg-blue-500 hover:bg-blue-900"
                   onClick={() => {
-                    setSelectedOrder(order);
-                    // document.getElementById("my_modal_5").showModal();
+                    openModal(order);
                   }}
                 >
                   Edit Order
@@ -75,37 +86,39 @@ const OrderTable = () => {
             </div>
           );
         })}
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
       </section>
-      {selectedOrder && (
-        <dialog id="my_modal_5" className="modal modal-open sm:modal-middle">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Hello!</h3>
-            <p className="py-4">
-              Press ESC key or click the button below to close
-            </p>
-            <p>{selectedOrder.total}</p>
-            <ul className="h-9/12 list-none">
-              {Object.entries(selectedOrder.order).map(([key, details]) => {
-                return (
-                  <li key={key}>
-                    {key}: {details.quantity}
-                  </li>
-                );
-              })}
-            </ul>
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn" onClick={() => setSelectedOrder(null)}>
-                  {" "}
-                  close
-                </button>
-              </form>
-            </div>
+      <dialog id="order_modal" className="modal sm:modal-middle">
+        <div className="modal-box">
+          {selectedOrder && (
+            <>
+              <h3 className="font-bold text-lg">Hello!</h3>
+              <p className="py-4">
+                Press ESC key or click the button below to close
+              </p>
+              <p>{selectedOrder.total}</p>
+              <ul className="h-9/12 list-none">
+                {Object.entries(selectedOrder.order).map(([key, details]) => {
+                  return (
+                    <li key={key}>
+                      {key}: {details.quantity}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
+
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn" onClick={() => closeModal()}>
+                {" "}
+                close
+              </button>
+            </form>
           </div>
-        </dialog>
-      )}
+        </div>
+      </dialog>
     </>
   );
 };
