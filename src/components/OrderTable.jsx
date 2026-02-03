@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 const OrderTable = () => {
-  const { orders, removeOrder } = useContext(OrderContext);
+  const { orders, removeOrder, increaseQuantity } = useContext(OrderContext);
   const [selectedOrder, setSelectedOrder] = useState(null);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
@@ -11,6 +11,8 @@ const OrderTable = () => {
     setSelectedOrder(order);
     document.getElementById("order_modal").showModal();
   };
+
+  const currentOrder = orders.find((o) => o.id === selectedOrder?.id);
   //close modal
   const closeModal = () => {
     const modal = document.getElementById("order_modal").close();
@@ -101,12 +103,19 @@ const OrderTable = () => {
               </p>
               <p>{selectedOrder.total}</p>
               <ul className="h-9/12 list-none">
-                {Object.entries(selectedOrder.order).map(([key, details]) => {
+                {Object.entries(currentOrder.order).map(([key, details]) => {
                   return (
                     <li key={key}>
                       <span>{key}:</span>
                       <div className="flex  justify-start items-center w-100 gap-9">
-                        <button className="btn bg-blue-500">+</button>
+                        <button
+                          className="btn bg-blue-500"
+                          onClick={() =>
+                            increaseQuantity(selectedOrder.id, key, 1)
+                          }
+                        >
+                          +
+                        </button>
                         {details.quantity}
                         <button className="btn bg-red-500">-</button>
                       </div>
