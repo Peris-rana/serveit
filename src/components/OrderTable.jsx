@@ -13,8 +13,12 @@ const OrderTable = () => {
   };
   //close modal
   const closeModal = () => {
-    setSelectedOrder(null);
-    document.getElementById("order_modal").close();
+    const modal = document.getElementById("order_modal").close();
+    if (modal) {
+      setTimeout(() => {
+        setSelectedOrder(null);
+      }, 0);
+    }
   };
 
   return (
@@ -34,7 +38,7 @@ const OrderTable = () => {
                   <h2 className="md:text-3xl text-xl text-slate-100 font-medium">
                     Order #{order.id}
                   </h2>
-                  <span className="text-xl badge badge-outline text-slate-500 p-4 badge-ghost">
+                  <span className="text-xl badge badge-outline text-orange-400 p-4 badge-ghost">
                     {order.total}
                   </span>
                 </div>
@@ -87,7 +91,7 @@ const OrderTable = () => {
           );
         })}
       </section>
-      <dialog id="order_modal" className="modal sm:modal-middle">
+      <dialog id="order_modal" className="modal sm:modal-middle duration-75">
         <div className="modal-box">
           {selectedOrder && (
             <>
@@ -100,7 +104,12 @@ const OrderTable = () => {
                 {Object.entries(selectedOrder.order).map(([key, details]) => {
                   return (
                     <li key={key}>
-                      {key}: {details.quantity}
+                      <span>{key}:</span>
+                      <div className="flex  justify-start items-center w-100 gap-9">
+                        <button className="btn bg-blue-500">+</button>
+                        {details.quantity}
+                        <button className="btn bg-red-500">-</button>
+                      </div>
                     </li>
                   );
                 })}
