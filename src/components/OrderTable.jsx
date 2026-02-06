@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 const OrderTable = () => {
-  const { orders, removeOrder, increaseQuantity } = useContext(OrderContext);
+  const { orders, removeOrder, increaseQuantity, calculateTotal } =
+    useContext(OrderContext);
   const [selectedOrder, setSelectedOrder] = useState(null);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
@@ -16,6 +17,7 @@ const OrderTable = () => {
   //close modal
   const closeModal = () => {
     const modal = document.getElementById("order_modal").close();
+    setSelectedOrder(null);
     if (modal) {
       setTimeout(() => {
         setSelectedOrder(null);
@@ -40,8 +42,9 @@ const OrderTable = () => {
                   <h2 className="md:text-3xl text-xl text-slate-100 font-medium">
                     Order #{order.id}
                   </h2>
+
                   <span className="text-xl badge badge-outline text-orange-400 p-4 badge-ghost">
-                    {order.total}
+                    {calculateTotal(order)}{" "}
                   </span>
                 </div>
                 <ul className="h-8/12 ">
@@ -101,28 +104,39 @@ const OrderTable = () => {
               <p className="py-4">
                 Press ESC key or click the button below to close
               </p>
-              <p>{selectedOrder.total}</p>
-              <ul className="h-9/12 list-none">
-                {Object.entries(currentOrder.order).map(([key, details]) => {
-                  return (
-                    <li key={key}>
-                      <span>{key}:</span>
-                      <div className="flex  justify-start items-center w-100 gap-9">
-                        <button
-                          className="btn bg-blue-500"
-                          onClick={() =>
-                            increaseQuantity(selectedOrder.id, key, 1)
-                          }
-                        >
-                          +
-                        </button>
-                        {details.quantity}
-                        <button className="btn bg-red-500">-</button>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+              <p className="badge badge-outline text-orange-600 text-2xl  py-5 mb-2">
+                {calculateTotal(currentOrder)}
+              </p>
+              <div className="flex gap-4">
+                <div>
+                  <ul className="h-9/12 list-none">
+                    {Object.entries(currentOrder.order).map(
+                      ([key, details]) => {
+                        return (
+                          <li key={key}>
+                            <span>{key}:</span>
+                            <div className="flex  justify-evenly items-center gap-4 ">
+                              <div>
+                                <button
+                                  className="btn bg-blue-800"
+                                  onClick={() =>
+                                    increaseQuantity(selectedOrder.id, key, 1)
+                                  }
+                                >
+                                  +
+                                </button>
+                              </div>
+                              <span>{details.quantity}</span>
+                              <div></div>
+                              <button className="btn bg-slate-700">-</button>
+                            </div>
+                          </li>
+                        );
+                      },
+                    )}
+                  </ul>
+                </div>
+              </div>
             </>
           )}
 

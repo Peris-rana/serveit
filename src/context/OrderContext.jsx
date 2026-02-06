@@ -32,6 +32,23 @@ export const OrderProvider = ({ children }) => {
     setOrders(updatedOrders);
     localStorage.setItem("Orders", JSON.stringify(updatedOrders));
   };
+  // calculate total price
+  // const calculateTotal = () => {
+  //   return orders.reduce((total, order) => {
+  //     const totalOrder = Object.values(order.order).reduce(
+  //       (sum, item) => sum + (item.price * item.quantity),
+  //       0,
+  //     );
+  //     return total + totalOrder;
+  //   }, 0);
+  // };
+
+  const calculateTotal = (order) => {
+    return Object.values(order.order).reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0,
+    );
+  };
   const removeOrder = (id) => {
     const updatedOrders = orders.filter((order) => order.id !== id);
     setOrders(updatedOrders);
@@ -39,7 +56,13 @@ export const OrderProvider = ({ children }) => {
   };
   return (
     <OrderContext.Provider
-      value={{ orders, setOrders, removeOrder, increaseQuantity }}
+      value={{
+        orders,
+        setOrders,
+        removeOrder,
+        increaseQuantity,
+        calculateTotal,
+      }}
     >
       {children}
     </OrderContext.Provider>
