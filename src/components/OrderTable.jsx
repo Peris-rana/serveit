@@ -1,8 +1,13 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 const OrderTable = () => {
-  const { orders, removeOrder, increaseQuantity, calculateTotal } =
-    useContext(OrderContext);
+  const {
+    orders,
+    removeOrder,
+    increaseQuantity,
+    calculateTotal,
+    decreaseQuantity,
+  } = useContext(OrderContext);
   const [selectedOrder, setSelectedOrder] = useState(null);
   //display the orders in descending order
   const ordersSorted = [...orders].reverse();
@@ -128,7 +133,14 @@ const OrderTable = () => {
                               </div>
                               <span>{details.quantity}</span>
                               <div></div>
-                              <button className="btn bg-slate-700">-</button>
+                              <button
+                                className="btn bg-slate-700"
+                                onClick={() =>
+                                  decreaseQuantity(selectedOrder.id, key, 1)
+                                }
+                              >
+                                -
+                              </button>
                             </div>
                           </li>
                         );

@@ -32,6 +32,28 @@ export const OrderProvider = ({ children }) => {
     setOrders(updatedOrders);
     localStorage.setItem("Orders", JSON.stringify(updatedOrders));
   };
+  // decrease quantity
+  const decreaseQuantity = (orderId, itemKey, delta) => {
+    const updatedOrders = orders.map((order) => {
+      if (order.id === orderId) {
+        const currentQuantity = order.order[itemKey].quantity;
+        const newQuantity = Math.max(0, currentQuantity - delta);
+        return {
+          ...order,
+          order: {
+            ...order.order,
+            [itemKey]: {
+              ...order.order[itemKey],
+              quantity: newQuantity,
+            },
+          },
+        };
+      }
+      return order;
+    });
+    setOrders(updatedOrders);
+    localStorage.setItem("Orders", JSON.stringify(updatedOrders));
+  };
   // calculate total price
   // const calculateTotal = () => {
   //   return orders.reduce((total, order) => {
@@ -62,6 +84,7 @@ export const OrderProvider = ({ children }) => {
         removeOrder,
         increaseQuantity,
         calculateTotal,
+        decreaseQuantity,
       }}
     >
       {children}
