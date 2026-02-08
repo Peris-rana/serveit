@@ -1,15 +1,11 @@
 import { useContext } from "react";
-import OrderNowButton from "./OrderNowButton";
-import ViewOrders from "./ViewOrders";
 import { FoodContext } from "../context/FoodContext";
-import { OrderContext } from "../context/OrderContext";
 
 const presentDate = new Date();
 
 const Invoice = () => {
   const foodMap = {};
   const { selectedFood } = useContext(FoodContext);
-  const { orders, setOrders } = useContext(OrderContext);
 
   selectedFood.forEach((food) => {
     if (foodMap[food.name]) {
@@ -20,22 +16,20 @@ const Invoice = () => {
   });
   const total = Object.values(foodMap).reduce(
     (acc, food) => acc + food.price * food.quantity,
-    0
+    0,
   );
   return (
     <>
-      <div className=" md:min-h-0 ">
-        <hr className="mt-4" />
+      <div>
+        <hr />
         <div className="flex justify-between mt-1">
-          <h1 className="text-lg font-bold">Invoice</h1>
           <div className="text-white">
             <div>Date: {presentDate.toLocaleDateString()}</div>
             <div>Invoice #: {total}</div>
           </div>
         </div>
-        <div className="mb-8 mt-3">
-          <h2 className="text-lg font-bold ">Bill To:</h2>
-          <div className="text-white mb-2">Customer</div>
+        <div className="mt-3">
+          <h2 className="text-lg font-bold ">Bill To: Customer <span></span></h2>
           <div className="text-white mb-2"> Nepal 12345</div>
         </div>
         <div></div>
@@ -61,7 +55,7 @@ const Invoice = () => {
             })}
           </tbody>
           <tfoot>
-            <tr className="mt-9">
+            <tr>
               <td className="text-left font-bold text-slate-200">Total</td>
               <td></td>
               <td className="text-right font-bold text-white">{total}</td>
@@ -69,12 +63,6 @@ const Invoice = () => {
           </tfoot>
         </table>
       </div>
-      <OrderNowButton
-        foodMap={foodMap}
-        total={total}
-        orders={orders}
-        setOrders={setOrders}
-      />
     </>
   );
 };

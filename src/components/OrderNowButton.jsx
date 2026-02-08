@@ -10,9 +10,12 @@ const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
       toast.error("Please select");
       return;
     }
-    const newOrder = { 
+    const newOrder = {
       id: crypto.randomUUID(),
-      order: foodMap, total: total, tokenNumber: total };
+      order: foodMap,
+      total: total,
+      tokenNumber: total,
+    };
     const updatedOrders = [...orders, newOrder];
     setOrders(updatedOrders);
     localStorage.setItem("Orders", JSON.stringify(updatedOrders));
@@ -21,10 +24,10 @@ const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
   };
   return (
     <button
-      className="btn btn-outline sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mb-4 mt-auto text-amber-50"
+      className="btn bg-green-700 text-green-300 hover:bg-green-800 md:h-16 w-auto md:w-1/3 text-sm md:text-xl font-mono"
       onClick={handleClick}
     >
-      Order Now
+      Place Order
     </button>
   );
 };
