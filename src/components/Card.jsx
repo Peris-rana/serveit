@@ -1,6 +1,6 @@
 const Card = ({ name, price, image, onSelect }) => {
   const handleClick = () => {
-    onSelect(price, name);
+    onSelect(price, name, image);
   };
   return (
     <div
@@ -11,10 +11,12 @@ const Card = ({ name, price, image, onSelect }) => {
         <img src={image} alt={image} className="w-full" />
       </figure>
       <div className="card-body p-3">
-        <h2 className="card-title text-xl font-black sm:text-2xl md:text-3xl absolute bottom-4">
+        <span className="text-lg font-bold md:text-3xl absolute md:bottom-11 bottom-8">
+          Rs.{price}
+        </span>
+        <span className="card-title text-lg font-black md:text-3xl absolute bottom-2">
           {name}
-        </h2>
-        <span className="text-2xl font-bold md:text-3xl">{price}</span>
+        </span>
       </div>
     </div>
   );

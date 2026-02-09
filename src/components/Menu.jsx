@@ -9,6 +9,7 @@ const Menu = () => {
   const [foodData, setFoodData] = useState([]);
   const [selectdFoodPrice, setSelectedFoodPrice] = useState([]);
   const [selectdFoodName, setSelectedFoodName] = useState([]);
+  const [selectdFoodImage, setSelectedFoodImage] = useState([]);
   const { addFood, reset } = useContext(FoodContext);
   useEffect(() => {
     const fetchData = () => {
@@ -25,11 +26,13 @@ const Menu = () => {
         return { Name: name, Price: selectdFoodPrice[index] };
       }),
     );
-  }, [selectdFoodName, selectdFoodPrice]);
-  const handleClick = (price, name) => {
+  }, [selectdFoodName, selectdFoodPrice, selectdFoodImage]);
+  const handleClick = (price, name, image) => {
     setSelectedFoodPrice((prev) => [...prev, price]);
     setSelectedFoodName((prev) => [...prev, name]);
-    addFood(name, price);
+    setSelectedFoodImage((prev) => [...prev, image]);
+
+    addFood(name, price, image);
   };
   const foodMap = {};
   const { selectedFood } = useContext(FoodContext);
