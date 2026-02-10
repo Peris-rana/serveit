@@ -7,6 +7,7 @@ import OrderNowButton from "./OrderNowButton";
 
 const Menu = () => {
   const [foodData, setFoodData] = useState([]);
+  const [selectdFoodIndex, setSelectedFoodIndex] = useState(null);
   const [selectdFoodPrice, setSelectedFoodPrice] = useState([]);
   const [selectdFoodName, setSelectedFoodName] = useState([]);
   const [selectdFoodImage, setSelectedFoodImage] = useState([]);
@@ -27,12 +28,20 @@ const Menu = () => {
       }),
     );
   }, [selectdFoodName, selectdFoodPrice, selectdFoodImage]);
-  const handleClick = (price, name, image) => {
+  const handleClick = (index, price, name, image) => {
+    setSelectedFoodIndex(index);
     setSelectedFoodPrice((prev) => [...prev, price]);
     setSelectedFoodName((prev) => [...prev, name]);
     setSelectedFoodImage((prev) => [...prev, image]);
-
     addFood(name, price, image);
+  };
+  // clear the index with reset
+  const handleReset = () => {
+    setSelectedFoodIndex(null);
+    setSelectedFoodPrice([]);
+    setSelectedFoodName([]);
+    setSelectedFoodImage([]);
+    reset();
   };
   const foodMap = {};
   const { selectedFood } = useContext(FoodContext);
@@ -58,17 +67,19 @@ const Menu = () => {
           {foodData.map((food, index) => (
             <Card
               key={index}
+              index={index}
               name={food.name}
               price={food.price}
               image={food.image}
               onSelect={handleClick}
+              isSelected={selectdFoodIndex === index}
             />
           ))}
         </div>
         <div className="flex md:justify-start gap-1 flex-col md:flex-row mt-4 pt-2">
           <button
             className="btn bg-slate-600 hover:bg-slate-700 text-slate-300 md:h-16 md:w-1/3 font-mono text-sm md:text-xl"
-            onClick={reset}
+            onClick={handleReset}
           >
             Reset
           </button>

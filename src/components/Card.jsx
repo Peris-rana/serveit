@@ -1,14 +1,16 @@
-const Card = ({ name, price, image, onSelect }) => {
+const Card = ({ index, name, price, image, onSelect, isSelected }) => {
   const handleClick = () => {
-    onSelect(price, name, image);
+    onSelect(index, price, name, image);
   };
   return (
     <div
-      className="card brightness-200 bg-base-100 image-full rounded-md  shadow-md cursor-pointer"
+      className={`card image-full rounded-md cursor-pointer transition-all duration-300 ease-in-out transform
+      ${isSelected ? "border-b-2 border-blue-600 scale-85 md:scale-90" : "brightness-200"}
+      `}
       onClick={handleClick}
     >
       <figure className="aspect-[8/9] md:aspect-auto md:h-80">
-        <img src={image} alt={image} className="w-full" />
+        <img src={image} alt={image} className="w-full scale-130" />
       </figure>
       <div className="card-body p-3">
         <span className="text-lg font-bold md:text-3xl absolute md:bottom-11 bottom-8">
