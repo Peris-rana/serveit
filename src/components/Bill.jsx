@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FoodContext } from "../context/FoodContext";
 import Invoice from "./Invoice";
 const Bill = () => {
-  const { selectedFood } = useContext(FoodContext);
+  const { selectedFood, removeFood } = useContext(FoodContext);
   console.log(selectedFood);
 
   return (
@@ -12,9 +12,15 @@ const Bill = () => {
           {selectedFood.map((food, index) => {
             return (
               <div
-                className="flex flex-col items-center gap-3 mt-3 p-2 cursor-pointer"
+                className=" relative flex flex-col items-center gap-3 mt-3 p-2 cursor-pointer"
                 key={index}
               >
+                <button
+                  className=" text-3xl absolute top-0 right-0 rounded-full bg-red-500 md:h-7 md:w-7 w-5 h-5 cursor-pointer flex  items-center  justify-center"
+                  onClick={() => removeFood(index)}
+                >
+                  -
+                </button>
                 <div className="avatar">
                   <div className="text-blue-600 ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
                     <img src={food.image} />

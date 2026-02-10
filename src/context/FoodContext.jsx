@@ -9,8 +9,16 @@ export const FoodProvider = ({ children }) => {
   const addFood = (name, price, image) => {
     setSelectedFood((prev) => [...prev, { name, price, image }]);
   };
+
+  // remove food
+  const removeFood = (indexToRemove) => {
+    setSelectedFood((prev) =>
+      prev.filter((_, index) => index !== indexToRemove),
+    );
+  };
+
   return (
-    <FoodContext.Provider value={{ selectedFood, addFood, reset }}>
+    <FoodContext.Provider value={{ selectedFood, addFood, removeFood, reset }}>
       {children}
     </FoodContext.Provider>
   );
