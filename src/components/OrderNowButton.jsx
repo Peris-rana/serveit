@@ -24,7 +24,7 @@ const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
   };
   return (
     <button
-      className="btn bg-green-700 text-green-300 hover:bg-green-800 md:h-16 w-auto md:w-1/3 text-sm md:text-xl font-mono"
+      className="btn bg-green-700 text-green-300 hover:bg-green-800 md:h-16 w-auto md:w-1/3 text-sm md:text-xl font-mono rounded-xl"
       onClick={handleClick}
     >
       Place Order

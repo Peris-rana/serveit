@@ -78,13 +78,13 @@ const Menu = () => {
         </div>
         <div className="flex md:justify-start gap-1 flex-col md:flex-row mt-4 pt-2">
           <button
-            className="btn bg-slate-600 hover:bg-slate-700 text-slate-300 md:h-16 md:w-1/3 font-mono text-sm md:text-xl"
+            className="btn bg-slate-600 hover:bg-slate-700 text-slate-300 md:h-16 md:w-1/3 font-mono text-sm md:text-xl rounded-xl"
             onClick={handleReset}
           >
             Reset
           </button>
           <button
-            className="btn bg-blue-700 hover:bg-blue-800 text-blue-300 md:h-16 md:w-1/3 text-sm md:text-xl font-mono p-3"
+            className="btn bg-blue-700 hover:bg-blue-800 text-blue-300 md:h-16 md:w-1/3 text-sm md:text-xl font-mono p-3 rounded-xl"
             onClick={() => document.getElementById("my_modal_4").showModal()}
           >
             Open Orders

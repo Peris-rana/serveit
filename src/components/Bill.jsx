@@ -8,7 +8,7 @@ const Bill = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="grid grid-cols-3 gap-1 mt-3 overflow-y-auto  max-h-[500px]">
+        <div className="grid grid-cols-3 gap-1 mt-3 overflow-y-auto  max-h-[400px]">
           {selectedFood.map((food, index) => {
             return (
               <div

@@ -29,7 +29,9 @@ const Invoice = () => {
           </div>
         </div>
         <div className="mt-3">
-          <h2 className="text-lg font-bold ">Bill To: Customer <span></span></h2>
+          <h2 className="text-lg font-bold ">
+            Bill To: Customer <span></span>
+          </h2>
           <div className="text-white mb-2"> Nepal 12345</div>
         </div>
         <div></div>
@@ -56,9 +58,17 @@ const Invoice = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td className="text-left font-bold text-slate-200">Total</td>
+              <td className="text-left font-bold">
+                <span className="badge badge-outline py-6 px-3 md:text-3xl text-2xl text-blue-500">
+                  Total
+                </span>
+              </td>
               <td></td>
-              <td className="text-right font-bold text-white">{total}</td>
+              <td className="text-right font-bold">
+                <span className="badge badge-outline text-orange-500 md:text-3xl text-2xl py-6 px-3">
+                  {total}
+                </span>
+              </td>
             </tr>
           </tfoot>
         </table>

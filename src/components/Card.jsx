@@ -4,8 +4,9 @@ const Card = ({ index, name, price, image, onSelect, isSelected }) => {
   };
   return (
     <div
-      className={`card image-full rounded-md cursor-pointer transition-all duration-300 ease-in-out transform
-      ${isSelected ? "border-b-2 border-blue-600 scale-85 md:scale-90" : "brightness-200"}
+      className={`card image-full rounded-md cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-90
+      
+      ${isSelected ? "border-b-3 border-b-blue-600 scale-85 md:scale-90 ring-1 ring-blue-600 " : "brightness-200"}
       `}
       onClick={handleClick}
     >
