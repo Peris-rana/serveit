@@ -7,7 +7,7 @@ const Bill = () => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full md:w-4/12 md:p-4 px-7">
         <div className="grid grid-cols-3 gap-1 mt-3 overflow-y-auto  max-h-[400px]">
           {selectedFood.map((food, index) => {
             return (
@@ -33,7 +33,7 @@ const Bill = () => {
             );
           })}
         </div>
-        <div className="mt-auto md:p-3">
+        <div className="mt-auto md:p-3 ">
           <div className="md:text-5xl text-4xl font-bold text-orange-400 mb-3">
             Invoice
           </div>

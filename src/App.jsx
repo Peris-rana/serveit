@@ -6,9 +6,11 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row ">
-        <Menu />
-        <Bill />
+      <div className="min-h-screen">
+        <div className="flex flex-col md:flex-row">
+          <Menu />
+          <Bill />
+        </div>
       </div>
       <ToastContainer
         position="top-left"

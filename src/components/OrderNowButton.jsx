@@ -2,10 +2,17 @@ import { useContext } from "react";
 import { toast } from "react-toastify";
 import { FoodContext } from "../context/FoodContext";
 
-const OrderNowButton = ({ foodMap, total, orders, setOrders }) => {
+const OrderNowButton = ({
+  foodMap,
+  total,
+  orders,
+  setOrders,
+  setSelectedFoodIndex,
+}) => {
   const { reset } = useContext(FoodContext);
 
   const handleClick = () => {
+    setSelectedFoodIndex(null);
     if (Object.keys(foodMap).length === 0) {
       toast.error("Please select");
       return;

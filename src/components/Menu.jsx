@@ -61,7 +61,7 @@ const Menu = () => {
 
   return (
     <>
-      <div className="md:w-8/12 md:min-h-0 min-h-screen">
+      <div className="md:w-8/12 p-4">
         <p className="text-4xl md:text-5xl font-black">Menu</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-3">
           {foodData.map((food, index) => (
@@ -106,6 +106,7 @@ const Menu = () => {
             total={total}
             orders={orders}
             setOrders={setOrders}
+            setSelectedFoodIndex={setSelectedFoodIndex}
           />
         </div>
       </div>
